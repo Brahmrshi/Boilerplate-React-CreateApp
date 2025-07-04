@@ -10,6 +10,9 @@ Additional demo features include a data grid, chart, file upload and a
 rich text editor. Storybook is configured under the `storybook` npm
 script to preview UI components in isolation.
 
+## Setup
+
+Install dependencies with `npm install` before running the scripts below.
 ### Theming
 
 Colors are derived from `src/Asset/MCX_Logo.png`. To change branding,
@@ -26,6 +29,7 @@ Runs the app in development mode.
 ### `npm test`
 
 Launches the test runner.
+Ensure dependencies are installed before running.
 
 ### `npm run build`
 
@@ -34,6 +38,7 @@ Builds the app for production.
 ### `npm run lint`
 
 Runs ESLint over the `src` directory.
+This uses a local ESLint version pinned in `package.json`.
 
 ### `npm run format`
 
