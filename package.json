@@ -40,20 +40,13 @@
     "test:coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
-    "format": "prettier --write 'src/**/*.{ts,tsx,scss}'",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "format": "prettier --write 'src/**/*.{ts,tsx,scss}'"
   },
   "devDependencies": {
     "eslint": "^8.56.0",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.1.0",
-    "@storybook/react": "^7.6.3",
-    "@storybook/addon-actions": "^7.6.3",
-    "@storybook/addon-essentials": "^7.6.3",
-    "@storybook/addon-interactions": "^7.6.3",
-    "@storybook/testing-react": "^2.2.1"
+    "prettier": "^3.1.0"
   },
   "eslintConfig": {
     "extends": [
