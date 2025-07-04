@@ -1,30 +1,53 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.scss';
-import { ThemeProvider, CssBaseline, Button, Box } from '@mui/material';
-import { lightTheme, darkTheme } from './theme';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CssBaseline, Box } from '@mui/material';
+import Sidebar from './components/Sidebar';
+import Header from './components/Header';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Landing from './pages/Landing';
+import Profile from './pages/Profile';
+import ProtectedRoute from './components/ProtectedRoute';
+import { AuthProvider } from './contexts/AuthContext';
+import { ThemeModeProvider } from './theme';
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
-  const [mode, setMode] = useState<'light' | 'dark'>('light');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <ThemeProvider theme={mode === 'light' ? lightTheme : darkTheme}>
-      <CssBaseline />
-      <Box className="App" textAlign="center" p={4}>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <Button
-            variant="contained"
-            onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
-          >
-            Toggle Theme
-          </Button>
-        </header>
-      </Box>
-    </ThemeProvider>
+    <ThemeModeProvider>
+      <AuthProvider>
+        <CssBaseline />
+        <Router>
+          <Header onMenuClick={() => setSidebarOpen(true)} />
+          <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+          <Box component="main" mt={2}>
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/login" element={<Login />} />
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </Box>
+        </Router>
+        <Toaster position="top-right" />
+      </AuthProvider>
+    </ThemeModeProvider>
   );
 }
 
