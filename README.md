@@ -7,8 +7,7 @@ and a Material UI theme extracted from the provided logo colors. A light
 and dark mode can be toggled from the header.
 
 Additional demo features include a data grid, chart, file upload and a
-rich text editor. Storybook is configured under the `storybook` npm
-script to preview UI components in isolation.
+rich text editor.
 
 ## Setup
 
@@ -43,9 +42,6 @@ This uses a local ESLint version pinned in `package.json`.
 
 Formats source files using Prettier.
 
-### `npm run storybook`
-
-Starts Storybook to preview components.
 
 ### `npm run test:coverage`
 
