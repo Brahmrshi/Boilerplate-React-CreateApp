@@ -1,5 +1,12 @@
 import React from 'react';
-import { Box, Paper, Typography } from '@mui/material';
+import {
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Grid,
+  Typography,
+} from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Line } from 'react-chartjs-2';
 import { useDropzone } from 'react-dropzone';
@@ -32,37 +39,49 @@ const Dashboard = () => {
 
   return (
     <Box p={2}>
-      <Typography variant="h5" gutterBottom>
-        Data Grid
+      <Typography variant="h4" gutterBottom>
+        Dashboard
       </Typography>
-      <Paper sx={{ height: 200, mb: 4 }}>
-        <DataGrid rows={rows} columns={columns} hideFooter />
-      </Paper>
-
-      <Typography variant="h5" gutterBottom>
-        Chart
-      </Typography>
-      <Paper sx={{ p: 2, mb: 4 }}>
-        <Line data={chartData} />
-      </Paper>
-
-      <Typography variant="h5" gutterBottom>
-        File Upload
-      </Typography>
-      <Paper sx={{ p: 2, mb: 4 }} {...getRootProps()}>
-        <input {...getInputProps()} />
-        <p>Drag 'n' drop files here, or click to select files</p>
-        {acceptedFiles.map((file) => (
-          <Typography key={file.name}>{file.name}</Typography>
-        ))}
-      </Paper>
-
-      <Typography variant="h5" gutterBottom>
-        Text Editor
-      </Typography>
-      <Paper sx={{ p: 2 }}>
-        <CKEditor editor={ClassicEditor} data="" />
-      </Paper>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={6}>
+          <Card sx={{ height: '100%' }}>
+            <CardHeader title="Data Grid" />
+            <CardContent sx={{ height: 240 }}>
+              <DataGrid rows={rows} columns={columns} hideFooter />
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Card sx={{ height: '100%' }}>
+            <CardHeader title="Chart" />
+            <CardContent>
+              <Line data={chartData} />
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Card sx={{ height: '100%' }} {...getRootProps()}>
+            <CardHeader title="File Upload" />
+            <CardContent>
+              <input {...getInputProps()} />
+              <Typography variant="body2" sx={{ mb: 1 }}>
+                Drag 'n' drop files here, or click to select files
+              </Typography>
+              {acceptedFiles.map((file) => (
+                <Typography key={file.name}>{file.name}</Typography>
+              ))}
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Card sx={{ height: '100%' }}>
+            <CardHeader title="Text Editor" />
+            <CardContent>
+              <CKEditor editor={ClassicEditor} data="" />
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
     </Box>
   );
 };
