@@ -2,6 +2,10 @@
 
 This project was bootstrapped with the Create React App TypeScript template.
 It uses **SCSS** for styling and includes ESLint with Prettier integration.
+The project now features a simple Material UI theme with a light/dark
+toggle powered by `@mui/material`.
+Use the "Toggle Theme" button in the header to switch between light and
+dark modes during runtime.
 
 ## Available Scripts
 
