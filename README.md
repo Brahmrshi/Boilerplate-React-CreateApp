@@ -2,10 +2,18 @@
 
 This project was bootstrapped with the Create React App TypeScript template.
 It uses **SCSS** for styling and includes ESLint with Prettier integration.
-The project now features a simple Material UI theme with a light/dark
-toggle powered by `@mui/material`.
-Use the "Toggle Theme" button in the header to switch between light and
-dark modes during runtime.
+The project now provides a simple dashboard layout with authentication
+and a Material UI theme extracted from the provided logo colors. A light
+and dark mode can be toggled from the header.
+
+Additional demo features include a data grid, chart, file upload and a
+rich text editor. Storybook is configured under the `storybook` npm
+script to preview UI components in isolation.
+
+### Theming
+
+Colors are derived from `src/Asset/MCX_Logo.png`. To change branding,
+update the palettes in `src/theme.ts` and restart the application.
 
 ## Available Scripts
 
@@ -30,6 +38,14 @@ Runs ESLint over the `src` directory.
 ### `npm run format`
 
 Formats source files using Prettier.
+
+### `npm run storybook`
+
+Starts Storybook to preview components.
+
+### `npm run test:coverage`
+
+Runs tests with a coverage report.
 
 ## Requirements
 
